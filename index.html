@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment-34</title>
+    <style>
+        body{
+            background-color:azure;
+        }
+     .s-container{
+          margin-left: 400px;
+ }
+ .btn,.btn1{
+            padding:10px;
+            background-color: #248f24;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            margin-left: -265px;
+            cursor: pointer;
+        }
+        .btn1{
+            background-color: red;
+            padding:10px;
+           
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        h1{
+            margin-left: 130px;
+            padding: 30px;
+            font-size: 40px;
+        }
+        #stud-name{
+            padding: 10px;
+            margin-left: -300px;
+            margin-bottom: 5px;
+            width: 300px;
+            border-radius: 8px;
+            border: 1px solid rgb(90, 94, 100);
+            background-color:aliceblue;
+        }
+        .s-card{
+            border: 1px solid black;
+            padding: 10px 20px;
+            margin-bottom: 15px;
+            margin-left: -300px;
+            border-radius: 20px;
+            background-color:bisque;
+            width: 280px;
+        }
+        
+        .text-center {
+            text-align: center;
+            color: black;
+            margin-left: -900px;
+        }
+
+        .action-btn-icon {
+            height: 20px;
+            margin-right: 5px;
+        }
+
+    </style>
+</head>
+<body>
+     <div class="s-container">
+        <h2 class="text-center">Students Name List📃</h2>
+    <input type="text" placeholder="Enter Student Name" id="stud-name"><br><br>
+    <button onclick="addStudent()" class="btn">
+        <img src="./add.jpeg" alt="" class="action-btn-icon">Add Student
+    </button>
+
+    <button onclick="removeStudent()" class="btn1">
+        <img src="./delete.jpeg" alt="" class="action-btn-icon"> Remove
+    </button><br><br>
+    <div id="students-container"></div>
+</div> 
+
+
+<!-- <button class="btn" class="action-btn" onclick="addStudent()">
+    <img src="./add.jpeg" alt="" class="action-btn-icon">
+    Add
+</button> -->
+
+<button class="btn" class="action-btn" onclick="addStudent()">
+                <img src="./add.jpeg" alt="" class="action-btn-icon">
+                Add
+            </button>
+
+<script>
+    const students = []
+    function getEmoji(){
+            const emoji = ['👩‍🎓','🙋‍♀️','🤴','🚵‍♀️','🧍‍♀️','🧍‍♂️','👩‍🏭','👩‍💼','👩‍🔬','👩‍🚒','🧕','👰‍♀️','🤵‍♀️','🤱','🦸‍♀️','🧚‍♀️','🧛‍♀️','🧜‍♀️','🧝‍♀️','🧖‍♀️'];
+
+            const min = 0;
+            const max = emoji.length-1;
+            const randamIndex = Math.floor(Math.random() * (max-min)) + min;
+            return emoji[randamIndex]
+        }
+    
+        function loadStudents(){
+            const studentContainer = document.getElementById("students-container");
+            studentContainer.innerHTML =""
+
+            for(let i = 0; i < students.length; i++){
+                studentContainer.innerHTML += `<div class="s-card"> ${getEmoji()} ${i+1} ${students[i]} </div>`;
+            }
+        }
+        loadStudents()
+
+        const studnetInput = document.getElementById("stud-name")
+
+        function addStudent(){
+            students.push(studnetInput.value)
+            studnetInput.value = "";
+            loadStudents()
+        }
+        function removeStudent(){
+            const studentIndex = students.indexOf(studnetInput.value);
+            students.splice(studentIndex, 1);
+            studnetInput.value = "";
+            loadStudents()
+        }
+
+</script>
+</body>
+</html>
